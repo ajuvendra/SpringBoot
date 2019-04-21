@@ -2,9 +2,15 @@ package com.ajuvendra.restservices.user;
 
 import java.util.Date;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
 public class UserBean {
 	private Integer id;
+	@Size(min = 2, message = "Name must be 2 or more characters")
 	private String name;
+	
+	@Past(message = "Birthdate can not be in past")
 	private Date birthDate;
 
 	public UserBean(Integer id, String name, Date birthDate) {

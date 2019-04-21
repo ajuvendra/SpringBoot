@@ -3,6 +3,7 @@ package com.ajuvendra.restservices.user;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -34,6 +35,18 @@ public class UserDaoService {
 		for (UserBean userBean : users) {
 			if(userBean.getId() == id) {
 				return userBean;
+			}
+		}
+		return null;
+	}
+	
+	public UserBean deleteById(int id) {
+		Iterator<UserBean> iter = users.iterator();
+		while(iter.hasNext()) {
+			UserBean user = iter.next();
+			if(user.getId() == id) {
+				iter.remove();
+				return user;
 			}
 		}
 		return null;
