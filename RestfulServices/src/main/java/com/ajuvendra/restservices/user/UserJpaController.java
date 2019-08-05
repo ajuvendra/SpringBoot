@@ -45,6 +45,18 @@ public class UserJpaController {
 		resource.add(linkTo.withRel("all-users"));
 		return resource;
 	}
+	
+	@GetMapping(path = "/jpa/usersByName/{name}")
+	public Resource<UserBean> findByName(@PathVariable String name) {
+		Optional<UserBean> user = userRepository.findByName(name);
+		if(!user.isPresent()) {
+			throw new UserNotFoundException("name: " + name);
+		}
+		Resource<UserBean> resource = new Resource<>(user.get());
+		ControllerLinkBuilder linkTo = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(this.getClass()).getAllUsers());
+		resource.add(linkTo.withRel("all-users"));
+		return resource;
+	}
 
 	@PostMapping(path = "/jpa/users")
 	public ResponseEntity<Object> createUser(@Valid @RequestBody UserBean user) {
