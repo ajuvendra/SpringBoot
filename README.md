@@ -14,6 +14,7 @@ My SpringBoot learning
 
 # URLs
 | Application | URL |
+| --------| -----|
 | Limits Service | http://localhost:8080/limits POST: http://localhost:8080/application/referesh |
 | Spring Cloud Config Server | http://localhost:8080/limits-service/default http://localhost:8080/limits-service/dev |
 | Currency Converter Service - Direct Call | http://localhost:8080/currency-converter/from/EUR/to/INR/quantity/10000 |
